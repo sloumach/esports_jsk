@@ -4,9 +4,9 @@ namespace App\Notifications;
 
 use Illuminate\Auth\Notifications\ResetPassword as BaseResetPassword;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Contracts\Queue\ShouldQueue; // zedet hedhi 
 
-class ResetPasswordNotification extends BaseResetPassword implements ShouldQueue
-{
+class ResetPasswordNotification extends BaseResetPassword 
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)

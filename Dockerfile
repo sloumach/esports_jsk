@@ -16,7 +16,6 @@ WORKDIR /var/www
 
 COPY . .
 
-# Install PHP & JS dependencies
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
     && npm install
 

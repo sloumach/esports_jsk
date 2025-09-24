@@ -9,9 +9,9 @@ use Carbon\Carbon;
 
 class ResetPasswordNotification extends BaseResetPassword implements ShouldQueue
 {
-    public $connection = 'database';   // your queue connection
-    public $queue = 'emails';          // queue name
-    public $delay = 0;                 // or Carbon interval if you want delay
+    public $connection = 'database';   
+    public $queue = 'emails';         
+    public $delay = 0;                 
 
     public function toMail($notifiable): MailMessage
     {

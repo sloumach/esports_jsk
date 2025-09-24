@@ -10,6 +10,7 @@ class VerifyEmailNotification extends BaseVerifyEmail implements ShouldQueue
 {
      public $connection = 'database';
     public $queue = 'emails';
+     public $delay = 0;    
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)

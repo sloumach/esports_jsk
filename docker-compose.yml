@@ -1,0 +1,18 @@
+services:
+  laravel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_backend
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/var/www
+      - laravel_vendor:/var/www/vendor
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+
+volumes:
+  laravel_vendor:

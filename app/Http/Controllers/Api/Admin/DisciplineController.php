@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Api\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DisciplineRequest;
 use App\Http\Resources\DisciplineResource;
@@ -9,7 +7,6 @@ use App\Models\Discipline;
 use App\Services\ManagerService\DisciplineService;
 use Illuminate\Http\JsonResponse;
 use Throwable;
-
 class DisciplineController extends Controller
 {
     public function __construct(
@@ -27,22 +24,29 @@ class DisciplineController extends Controller
         }
     }
 
-    public function store(DisciplineRequest $request): JsonResponse
-    {
-        try {
-            $data = $request->validated();
+  public function store(DisciplineRequest $request): JsonResponse
+{
+    try {
+        $data = $request->validated();
 
-            if ($request->hasFile('logo')) {
-                $path = $request->file('logo')->store('disciplines', 'public');
-                $data['logo'] = $path;
-            }
-
-            $discipline = $this->disciplineService->create($data);
-            return response()->json(new DisciplineResource($discipline), 201);
-        } catch (Throwable $e) {
-            return response()->json(['error' => 'Unable to create discipline'], 500);
+        if ($request->hasFile('logo')) {
+            $path = $request->file('logo')->store('disciplines', 'public');
+            $data['logo'] = $path;
         }
+
+        $discipline = $this->disciplineService->create($data);
+        
+        return response()->json(new DisciplineResource($discipline), 201)
+            ->header('Access-Control-Allow-Origin', 'http://localhost:3002')
+            ->header('Access-Control-Allow-Credentials', 'true');
+    } catch (Throwable $e) {
+        \Log::error('Discipline creation error: ' . $e->getMessage());
+        return response()->json([
+            'error' => 'Unable to create discipline',
+            'message' => $e->getMessage()
+        ], 500);
     }
+}
 
     public function show(Discipline $discipline): JsonResponse
     {

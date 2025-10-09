@@ -59,3 +59,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
+docker exec -it laravel_backend php artisan migrate --seed
+
+
+docker run --rm -v ${PWD}:/app -w /app --network=esports_jsk_laravel_network -e DB_HOST=mysql -e DB_PORT=3306 -e DB_DATABASE=esports_jsk -e DB_USERNAME=laravel -e DB_PASSWORD=laravelpassword php:8.2-cli bash -c "docker-php-ext-install pdo pdo_mysql && php artisan db:seed"
+
+docker run --rm -v ${PWD}:/app -w /app --network=esports_jsk_laravel_network -e DB_HOST=mysql -e DB_PORT=3306 -e DB_DATABASE=esports_jsk -e DB_USERNAME=laravel -e DB_PASSWORD=laravelpassword php:8.2-cli bash -c "docker-php-ext-install pdo pdo_mysql && php artisan migrate"

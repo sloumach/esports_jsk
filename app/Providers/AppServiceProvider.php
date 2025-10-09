@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Disable any default rate limiting
+        \Illuminate\Support\Facades\Route::prependMiddlewareToGroup('api', \Illuminate\Routing\Middleware\SubstituteBindings::class);
     }
 }

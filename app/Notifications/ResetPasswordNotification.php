@@ -4,9 +4,15 @@ namespace App\Notifications;
 
 use Illuminate\Auth\Notifications\ResetPassword as BaseResetPassword;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Contracts\Queue\ShouldQueue; 
+use Carbon\Carbon;
 
 class ResetPasswordNotification extends BaseResetPassword implements ShouldQueue
 {
+    public $connection = 'database';   
+    public $queue = 'emails';         
+    public $delay = 0;                 
+
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)

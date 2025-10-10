@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\User\UserController; 
+use App\Http\Controllers\Api\User\UserController;
 use App\Http\Controllers\Api\Admin\TeamController;
 use App\Http\Controllers\Api\Admin\StaffRoleController;
 use App\Http\Controllers\Api\Admin\DisciplineController;

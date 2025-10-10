@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+namespace App\Http\Controllers\Api\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DisciplineRequest;
 use App\Http\Resources\DisciplineResource;

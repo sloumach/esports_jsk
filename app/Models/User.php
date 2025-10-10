@@ -51,7 +51,7 @@ class User extends Authenticatable implements MustVerifyEmail
      |   RELATIONSHIPS
      ========================== */
 
-    // User has many roles (Many-to-Many)
+    // User has many roles (Many-to-Many)  WHY ?? ??
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'role_user');

@@ -15,8 +15,7 @@ class AdminUserSeeder extends Seeder
             [
                 'first_name' => 'Super',
                 'last_name'  => 'Admin',
-                'password'   => bcrypt('password123'), // ⚠️ change in prod
-                'locale'     => 'fr',
+                'password'   => bcrypt('password123'),
                 'status'     => 'active',
             ]
         );

@@ -4,10 +4,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\User\UserController; 
 use App\Http\Controllers\Api\Admin\TeamController;
 use App\Http\Controllers\Api\Admin\StaffRoleController;
 use App\Http\Controllers\Api\Admin\DisciplineController;
+use App\Http\Controllers\Api\Admin\NewsController;
+use App\Http\Controllers\Api\Admin\EventController;
+use App\Http\Controllers\Api\Admin\LeagueController;
+use App\Http\Controllers\Api\Admin\SponsorController;
+use App\Http\Controllers\Api\Admin\PageController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 // Auth

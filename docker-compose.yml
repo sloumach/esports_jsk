@@ -1,68 +1,18 @@
-version: "3.8"
-
 services:
-    mysql:
-        image: mysql:8.0
-        container_name: laravel_mysql
-        restart: unless-stopped
-        environment:
-            MYSQL_ROOT_PASSWORD: rootpassword
-            MYSQL_DATABASE: esports_jsk
-            MYSQL_USER: laravel
-            MYSQL_PASSWORD: laravelpassword
-        ports:
-            - "3306:3306"
-        volumes:
-            - mysql_data:/var/lib/mysql
-        command:
-            - --ssl=0
-        networks:
-            - laravel_network
-
-    laravel:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        container_name: laravel_backend
-        restart: unless-stopped
-        ports:
-            - "9000:9000"
-        volumes:
-            - .:/var/www
-            - laravel_vendor:/var/www/vendor
-        environment:
-            APP_ENV: local
-            APP_DEBUG: "true"
-            DB_HOST: mysql
-            DB_PORT: 3306
-            DB_DATABASE: esports_jsk
-            DB_USERNAME: laravel
-            DB_PASSWORD: laravelpassword
-        depends_on:
-            - mysql
-        networks:
-            - laravel_network
-
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        container_name: laravel_phpmyadmin
-        restart: unless-stopped
-        ports:
-            - "8080:80"
-        environment:
-            PMA_HOST: mysql
-            PMA_PORT: 3306
-            PMA_USER: root
-            PMA_PASSWORD: rootpassword
-        depends_on:
-            - mysql
-        networks:
-            - laravel_network
+  laravel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_backend
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/var/www
+      - laravel_vendor:/var/www/vendor
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
 
 volumes:
-    laravel_vendor:
-    mysql_data:
-
-networks:
-    laravel_network:
-        driver: bridge
+  laravel_vendor:

@@ -51,7 +51,7 @@ class User extends Authenticatable implements MustVerifyEmail
      |   RELATIONSHIPS
      ========================== */
 
-    // User has many roles (Many-to-Many)
+    // User has many roles (Many-to-Many)  WHY ?? ??
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'role_user');
@@ -81,6 +81,33 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmailNotification);
+    }
+
+    public function teamsAsPlayer()
+    {
+        return $this->belongsToMany(Team::class, 'team_user')
+                    ->withPivot('joined_at')
+                    ->withTimestamps();
+    }
+
+    // User belongs to many teams as staff
+    public function teamsAsStaff()
+    {
+        return $this->belongsToMany(Team::class, 'team_staff')
+                    ->withPivot('staff_role_id', 'assigned_at')
+                    ->withTimestamps();
+    }
+
+    // User has many authored news
+    public function news()
+    {
+        return $this->hasMany(News::class, 'author_id');
+    }
+
+    // User has many created events
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'created_by');
     }
 
 

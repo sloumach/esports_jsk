@@ -6,7 +6,14 @@ return [
 
     'allowed_methods' => ['*'],
 
+<<<<<<< HEAD
     'allowed_origins' => ['http://localhost:3000' , 'http://localhost:3002'],
+=======
+'allowed_origins' => [
+    'http://localhost:3000',
+    'http://localhost:3002',
+],
+>>>>>>> 25ce2ef525261f3944db630334ebd39adcc18731
 
     'allowed_origins_patterns' => [],
 
@@ -19,5 +26,8 @@ return [
     'supports_credentials' => true,
 
 ];
+<<<<<<< HEAD
 
 -
+=======
+>>>>>>> 25ce2ef525261f3944db630334ebd39adcc18731

@@ -6,4 +6,8 @@ vendor
 *.tmp
 desktop.ini
 Thumbs.db
+<<<<<<< HEAD
 ~$*
+=======
+~$*
+>>>>>>> 25ce2ef525261f3944db630334ebd39adcc18731

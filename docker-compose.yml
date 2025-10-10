@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: '3.8'
 
 services:
@@ -19,6 +20,9 @@ services:
     networks:
       - laravel_network
 
+=======
+services:
+>>>>>>> 25ce2ef525261f3944db630334ebd39adcc18731
   laravel:
     build:
       context: .
@@ -33,6 +37,7 @@ services:
     environment:
       APP_ENV: local
       APP_DEBUG: "true"
+<<<<<<< HEAD
       DB_HOST: mysql
       DB_PORT: 3306
       DB_DATABASE: esports_jsk
@@ -66,3 +71,8 @@ volumes:
 networks:
   laravel_network:
     driver: bridge
+=======
+
+volumes:
+  laravel_vendor:
+>>>>>>> 25ce2ef525261f3944db630334ebd39adcc18731

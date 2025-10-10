@@ -68,7 +68,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
 
-// Protected
+// Protected Admin routes
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -109,3 +109,5 @@ Route::middleware('auth:sanctum')->group(function () {
     // Pages
     Route::apiResource('pages', PageController::class);
 });
+
+// Public routes

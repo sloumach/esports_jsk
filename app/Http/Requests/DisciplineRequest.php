@@ -9,8 +9,8 @@ class DisciplineRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'        => ['required', 'string', 'max:100'],
-            'slug'        => ['required', 'string', 'max:120', 'unique:disciplines,slug,' . $this->id],
+            'name'        => ['sometimes', 'string', 'max:100'],
+            'slug'        => ['sometimes', 'string', 'max:120'],
             'description' => ['nullable', 'string'],
             'logo' => ['nullable', 'image', 'max:2048'], // max 2MB
         ];

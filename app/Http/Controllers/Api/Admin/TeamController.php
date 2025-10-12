@@ -61,7 +61,7 @@ class TeamController extends Controller
 
     public function addPlayer(Request $request, Team $team): JsonResponse
     {
-
+        dd($team);
             $request->validate(['user_id' => 'required|uuid|exists:users,id']);
             $this->teamService->addPlayer($team, $request->user_id);
             return response()->json(['message' => 'Player added successfully']);

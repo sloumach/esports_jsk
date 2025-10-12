@@ -5,14 +5,15 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\User\UserController;
-use App\Http\Controllers\Api\Admin\TeamController;
-use App\Http\Controllers\Api\Admin\StaffRoleController;
-use App\Http\Controllers\Api\Admin\DisciplineController;
 use App\Http\Controllers\Api\Admin\NewsController;
+use App\Http\Controllers\Api\Admin\PageController;
+use App\Http\Controllers\Api\Admin\TeamController;
 use App\Http\Controllers\Api\Admin\EventController;
 use App\Http\Controllers\Api\Admin\LeagueController;
+use App\Http\Controllers\Api\Admin\PlayerController;
 use App\Http\Controllers\Api\Admin\SponsorController;
-use App\Http\Controllers\Api\Admin\PageController;
+use App\Http\Controllers\Api\Admin\StaffRoleController;
+use App\Http\Controllers\Api\Admin\DisciplineController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 // Auth
@@ -83,8 +84,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Teams
     Route::apiResource('teams', TeamController::class);
-    Route::post('teams/{team}/players/add', [TeamController::class, 'addPlayer']);
-    Route::post('teams/{team}/players/remove', [TeamController::class, 'removePlayer']);
+    // Players
+    Route::apiResource('players', PlayerController::class);
+    Route::post('teams/{player}/players/add', [PlayerController::class, 'attachToTeam']);
+    Route::post('teams/{player}/players/remove', [PlayerController::class, 'detachFromTeam']);
+
     Route::post('teams/{team}/staff/add', [TeamController::class, 'addStaff']);
     Route::post('teams/{team}/staff/remove', [TeamController::class, 'removeStaff']);
 
